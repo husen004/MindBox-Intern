@@ -95,21 +95,23 @@ export default function Todos() {
         />
       </form>
 
-      <ul className={`mb-4 divide-y transition-all duration-300 ease-in-out overflow-hidden ${
-        toggle ? 'max-h-0 opacity-0' : 'max-h-96 opacity-100'
-      }`}>
-        {filteredTodos.length === 0 ? (
-          <li className="text-gray-400 text-center py-4">No tasks</li>
-        ) : (
-          filteredTodos.map(todo => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={handleToggle}
-            />
-          ))
-        )}
-      </ul>
+      <div className="max-h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+        <ul className={`mb-4 divide-y transition-all duration-300 ease-in-out overflow-hidden ${
+          toggle ? 'max-h-0 opacity-0' : 'max-h-full opacity-100'
+        }`}>
+          {filteredTodos.length === 0 ? (
+            <li className="text-gray-400 text-center py-4">No tasks</li>
+          ) : (
+            filteredTodos.map(todo => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onToggle={handleToggle}
+              />
+            ))
+          )}
+        </ul>
+      </div>
 
       <div className="flex justify-between items-center ml-2 p-2 border-t-2">
         <span className="text-[15px] text-gray-600">
